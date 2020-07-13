@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  CategoryViewController.swift
 //  ToDoList
 //
 //  Created by Justyna Kowalkowska on 13/07/2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class CategoryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
