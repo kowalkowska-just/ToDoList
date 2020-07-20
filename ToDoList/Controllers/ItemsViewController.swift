@@ -11,9 +11,17 @@ import UIKit
 class ItemsViewController: UITableViewController {
 
     var itemsArray = ["GIT", "Swift", "Objectiv-C", "Jira"]
+    
+    //Configuring standard UserDefaults
+    let defaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        
+        if let items = defaults.array(forKey: "ToDoListArray") as? [String] {
+            itemsArray = items
+        }
     }
 
 //MARK: - TableView DataSource Methods
@@ -59,6 +67,10 @@ class ItemsViewController: UITableViewController {
             if alertTextField.text! != "" {
                 self.itemsArray.append(alertTextField.text!)
             }
+            
+            //Saving itemArray to UserDefaults.
+            self.defaults.set(self.itemsArray, forKey: "ToDoListArray")
+            
             self.tableView.reloadData()
             
             
