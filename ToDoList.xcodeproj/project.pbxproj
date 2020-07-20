@@ -61,7 +61,7 @@
 				CEA9944924BCBDE000C3D491 /* AppDelegate.swift */,
 				CEA9944B24BCBDE000C3D491 /* SceneDelegate.swift */,
 				CEA9945F24BCC04600C3D491 /* Controllers */,
-				CEA9944F24BCBDE000C3D491 /* Main.storyboard */,
+				CEA9946024BD099800C3D491 /* View */,
 				CEA9945224BCBDE800C3D491 /* Assets.xcassets */,
 				CEA9945424BCBDE800C3D491 /* LaunchScreen.storyboard */,
 				CEA9945724BCBDE800C3D491 /* Info.plist */,
@@ -76,6 +76,14 @@
 				CEA9945D24BCC02A00C3D491 /* ItemsViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		CEA9946024BD099800C3D491 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CEA9944F24BCBDE000C3D491 /* Main.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
