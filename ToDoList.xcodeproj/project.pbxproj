@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE71F4E524C6564D00BC0CA8 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE71F4E424C6564D00BC0CA8 /* Item.swift */; };
 		CEA9944A24BCBDE000C3D491 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA9944924BCBDE000C3D491 /* AppDelegate.swift */; };
 		CEA9944C24BCBDE000C3D491 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA9944B24BCBDE000C3D491 /* SceneDelegate.swift */; };
 		CEA9944E24BCBDE000C3D491 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA9944D24BCBDE000C3D491 /* CategoryViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE71F4E424C6564D00BC0CA8 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		CEA9944624BCBDE000C3D491 /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEA9944924BCBDE000C3D491 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEA9944B24BCBDE000C3D491 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +41,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE71F4E324C6562700BC0CA8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CE71F4E424C6564D00BC0CA8 /* Item.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		CEA9943D24BCBDE000C3D491 = {
 			isa = PBXGroup;
 			children = (
@@ -60,6 +70,7 @@
 			children = (
 				CEA9944924BCBDE000C3D491 /* AppDelegate.swift */,
 				CEA9944B24BCBDE000C3D491 /* SceneDelegate.swift */,
+				CE71F4E324C6562700BC0CA8 /* Model */,
 				CEA9945F24BCC04600C3D491 /* Controllers */,
 				CEA9946024BD099800C3D491 /* View */,
 				CEA9945224BCBDE800C3D491 /* Assets.xcassets */,
@@ -157,6 +168,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE71F4E524C6564D00BC0CA8 /* Item.swift in Sources */,
 				CEA9944E24BCBDE000C3D491 /* CategoryViewController.swift in Sources */,
 				CEA9945E24BCC02A00C3D491 /* ItemsViewController.swift in Sources */,
 				CEA9944A24BCBDE000C3D491 /* AppDelegate.swift in Sources */,
