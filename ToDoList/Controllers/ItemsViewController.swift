@@ -23,24 +23,7 @@ class ItemsViewController: UITableViewController {
         
         print(dataFilePath)
         
-        let newItem = Item()
-        newItem.title = "GIT"
-        newItem.done = false
-        itemArray.append(newItem)
-        
-        let newItem1 = Item()
-        newItem1.title = "Swift"
-        newItem1.done = false
-        itemArray.append(newItem1)
-        
-        let newItem2 = Item()
-        newItem2.title = "Objectiv-C"
-        newItem2.done = false
-        itemArray.append(newItem2)
-        
-//        if let items = defaults.dictionary(forKey: "ToDoListArray") as? [Item()] {
-//            itemsArray = items
-//        }
+        loadItems()
     }
 
 //MARK: - TableView DataSource Methods
@@ -138,4 +121,15 @@ class ItemsViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
+    func loadItems() {
+        if let data = try? Data(contentsOf: dataFilePath!) {
+            let decoder = PropertyListDecoder()
+        
+            do {
+                itemArray = try decoder.decode([Item].self, from: data)
+            } catch {
+                print("Error decoding item array, \(error)")
+            }
+        }
+    }
 }
