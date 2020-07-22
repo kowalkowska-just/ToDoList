@@ -10,7 +10,9 @@ import UIKit
 
 class ItemsViewController: UITableViewController {
 
-//    var itemsArray = ["GIT", "Swift", "Objectiv-C", "Jira"]
+    
+    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
+    
     var itemArray = [Item]()
     
     //Configuring standard UserDefaults
@@ -18,6 +20,8 @@ class ItemsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print(dataFilePath)
         
         let newItem = Item()
         newItem.title = "GIT"
@@ -79,7 +83,7 @@ class ItemsViewController: UITableViewController {
         
         itemArray[indexPath.row].done = !itemArray[indexPath.row].done
         
-        tableView.reloadData()
+        self.saveItems()
     }
     
     
@@ -91,20 +95,15 @@ class ItemsViewController: UITableViewController {
         
         let alert = UIAlertController(title: "Add New Item", message: "", preferredStyle: .alert)
         let action = UIAlertAction(title: "Add Item", style: .default) { (action) in
+           
             //What will happen once the user click the Add Item button on our UIAlert.
-            
-            
             let newItem = Item()
             newItem.title = alertTextField.text!
             if alertTextField.text! != "" {
                 self.itemArray.append(newItem)
             }
             
-            //Saving itemArray to UserDefaults.
-            self.defaults.set(self.itemArray, forKey: "ToDoListArray")
-            
-            self.tableView.reloadData()
-            
+            self.saveItems()
             
         }
         
@@ -125,5 +124,18 @@ class ItemsViewController: UITableViewController {
         
     }
     
+    func saveItems() {
+        
+        let encoder = PropertyListEncoder()
+        
+        do {
+            let data = try encoder.encode(itemArray)
+            try data.write(to: dataFilePath!)
+        } catch {
+            print("Error encoding item array \(error)")
+        }
+        
+        self.tableView.reloadData()
+    }
     
 }
