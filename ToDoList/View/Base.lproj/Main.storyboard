@@ -33,12 +33,18 @@
                         <barButtonItem key="backBarButtonItem" title="Back to Category List" id="ztH-c9-1Ig"/>
                         <barButtonItem key="rightBarButtonItem" title="AddCategryButton" image="plus" catalog="system" id="x6z-sk-YCE">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="addCategoryButtonPressed:" destination="bj0-oq-Ggx" id="1px-q2-8j5"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="KhJ-0W-4Iu" kind="show" id="OaU-LC-RC2"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zYt-mH-1Di" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1052" y="-591"/>
+            <point key="canvasLocation" x="1030" y="127"/>
         </scene>
         <!--ItemsViewController-->
         <scene sceneID="1Df-1z-gTH">
@@ -102,7 +108,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="KhJ-0W-4Iu" kind="relationship" relationship="rootViewController" id="xGq-P3-aBG"/>
+                        <segue destination="bj0-oq-Ggx" kind="relationship" relationship="rootViewController" id="Uuj-tG-cIN"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8gu-sX-qP4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

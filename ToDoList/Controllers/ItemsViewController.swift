@@ -16,9 +16,6 @@ class ItemsViewController: UITableViewController{
     
     var itemArray = [Item]()
     
-    //Configuring standard UserDefaults
-    let defaults = UserDefaults.standard
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -82,7 +79,7 @@ class ItemsViewController: UITableViewController{
             
             let newItem = Item(context: self.context)
             newItem.title = alertTextField.text!
-            if alertTextField.text! != "" {
+            if newItem.title != "" {
                 newItem.done = false
                 self.itemArray.append(newItem)
             }
@@ -107,6 +104,8 @@ class ItemsViewController: UITableViewController{
         present(alert, animated: true, completion: nil)
         
     }
+    
+//MARK: - Core Data Functions
     
     func saveItems() {
         
