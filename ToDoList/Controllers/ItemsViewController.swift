@@ -16,12 +16,17 @@ class ItemsViewController: UITableViewController{
     
     var itemArray = [Item]()
     
+    var selectedCategory : Category? {
+        didSet {
+            loadItems()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
-        
-        loadItems()
+
     }
 
 //MARK: - TableView DataSource Methods
@@ -81,6 +86,7 @@ class ItemsViewController: UITableViewController{
             newItem.title = alertTextField.text!
             if newItem.title != "" {
                 newItem.done = false
+                newItem.parentCategory = self.selectedCategory
                 self.itemArray.append(newItem)
             }
             
@@ -105,7 +111,7 @@ class ItemsViewController: UITableViewController{
         
     }
     
-//MARK: - Core Data Functions
+//MARK: - Data Manupulation Methods
     
     func saveItems() {
         
@@ -118,9 +124,18 @@ class ItemsViewController: UITableViewController{
         self.tableView.reloadData()
     }
     
-    func loadItems(with request: NSFetchRequest<Item> = Item.fetchRequest()) {
+    func loadItems(with request: NSFetchRequest<Item> = Item.fetchRequest(), predicate: NSPredicate? = nil) {
 
-            do {
+        let categoryPredicate = NSPredicate(format: "parentCategory.name MATCHES %@", selectedCategory!.name!)
+        
+        if let addtionalPredicate = predicate {
+            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [categoryPredicate, addtionalPredicate])
+        } else {
+            request.predicate = categoryPredicate
+        }
+        
+        
+        do {
                 itemArray = try context.fetch(request)
             } catch {
                 print("Error fetching data from context: \(error)")
@@ -141,13 +156,10 @@ extension ItemsViewController: UISearchBarDelegate {
         
         let predicate = NSPredicate(format: "title CONTAINS [cd] %@", searchBar.text!)
         
-        request.predicate = predicate
+        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
         
-        let sortDescriptor = NSSortDescriptor(key: "title", ascending: true)
         
-        request.sortDescriptors = [sortDescriptor]
-        
-        self.loadItems(with: request)
+        self.loadItems(with: request, predicate: predicate)
         
     }
     
