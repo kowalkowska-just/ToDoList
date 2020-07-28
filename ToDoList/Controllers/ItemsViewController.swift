@@ -7,15 +7,13 @@
 //
 
 import UIKit
-import CoreData
+import RealmSwift
 
 class ItemsViewController: UITableViewController{
+    
+    var toDoItems : Results<Item>?
+    let realm = try! Realm()
 
-    
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
-    var itemArray = [Item]()
-    
     var selectedCategory : Category? {
         didSet {
             loadItems()
@@ -33,25 +31,20 @@ class ItemsViewController: UITableViewController{
     
     //Number of cells
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return itemArray.count
+        return toDoItems?.count ?? 1
     }
     
     //Contents of the cells
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
-        let item = itemArray[indexPath.row]
         
+        if let item = toDoItems?[indexPath.row] {
         cell.textLabel?.text = item.title
-        
-//        if item.done == false {
-//            cell.accessoryType = .none
-//        } else {
-//            cell.accessoryType = .checkmark
-//        }
-        
-// Ternary operator ===>
         cell.accessoryType = item.done == true ? .checkmark : .none
+        } else {
+            cell.textLabel?.text = "No Items Added."
+        }
         
         return cell
     }
@@ -60,14 +53,17 @@ class ItemsViewController: UITableViewController{
 
     //Selected cell
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-                
-        //Delete data in CoreData
-//        context.delete(itemArray[indexPath.row])
-//        itemArray.remove(at: indexPath.row)
         
-        itemArray[indexPath.row].done = !itemArray[indexPath.row].done
-        
-        self.saveItems()
+        if let item = toDoItems?[indexPath.row] {
+            do {
+                try realm.write {
+                item.done = !item.done
+                }
+            } catch {
+                print("Error saving done status, \(error)")
+            }
+        }
+        tableView.reloadData()
     }
     
     
@@ -82,16 +78,18 @@ class ItemsViewController: UITableViewController{
            
             //What will happen once the user click the Add Item button on our UIAlert.
             
-            let newItem = Item(context: self.context)
-            newItem.title = alertTextField.text!
-            if newItem.title != "" {
-                newItem.done = false
-                newItem.parentCategory = self.selectedCategory
-                self.itemArray.append(newItem)
+            if let currentCategory = self.selectedCategory {
+                do {
+                    try self.realm.write {
+                        let newItem = Item()
+                        newItem.title = alertTextField.text!
+                        currentCategory.items.append(newItem)
+                }
+                } catch {
+                    print("Error saving new Item, \(error)")
+                }
             }
-            
-            self.saveItems()
-            
+            self.tableView.reloadData()
         }
         
         alert.addTextField { (textField: UITextField) in
@@ -112,64 +110,39 @@ class ItemsViewController: UITableViewController{
     }
     
 //MARK: - Data Manupulation Methods
-    
-    func saveItems() {
-        
-        do {
-            try context.save()
-        } catch {
-            print("Error saving context \(error)")
-        }
-        
-        self.tableView.reloadData()
-    }
-    
-    func loadItems(with request: NSFetchRequest<Item> = Item.fetchRequest(), predicate: NSPredicate? = nil) {
 
-        let categoryPredicate = NSPredicate(format: "parentCategory.name MATCHES %@", selectedCategory!.name!)
-        
-        if let addtionalPredicate = predicate {
-            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [categoryPredicate, addtionalPredicate])
-        } else {
-            request.predicate = categoryPredicate
-        }
-        
-        
-        do {
-                itemArray = try context.fetch(request)
-            } catch {
-                print("Error fetching data from context: \(error)")
-            }
-        
+    func loadItems() {
+        toDoItems = selectedCategory?.items.sorted(byKeyPath: "title", ascending: true)
+
         tableView.reloadData()
     }
 }
 
 //MARK: - Search bar methods
 
-extension ItemsViewController: UISearchBarDelegate {
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
-        let request: NSFetchRequest<Item> = Item.fetchRequest()
-        print(searchBar.text!)
-        
-        let predicate = NSPredicate(format: "title CONTAINS [cd] %@", searchBar.text!)
-        
-        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
-        
-        
-        self.loadItems(with: request, predicate: predicate)
-        
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchBar.text!.count == 0 {
-            loadItems()
-            DispatchQueue.main.async {
-                searchBar.resignFirstResponder()
-            }
-        }
-        
-    }
-}
+//extension ItemsViewController: UISearchBarDelegate {
+//
+//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+//
+//        let request: NSFetchRequest<Item> = Item.fetchRequest()
+//        print(searchBar.text!)
+//
+//        let predicate = NSPredicate(format: "title CONTAINS [cd] %@", searchBar.text!)
+//
+//        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+//
+//
+//        self.loadItems(with: request, predicate: predicate)
+//
+//    }
+//
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        if searchBar.text!.count == 0 {
+//            loadItems()
+//            DispatchQueue.main.async {
+//                searchBar.resignFirstResponder()
+//            }
+//        }
+//
+//    }
+//}
