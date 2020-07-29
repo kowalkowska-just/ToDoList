@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class ItemsViewController: UITableViewController{
+class ItemsViewController: SwipeTableViewController{
     
     var toDoItems : Results<Item>?
     let realm = try! Realm()
@@ -23,8 +23,7 @@ class ItemsViewController: UITableViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
-
+     //   tableView.rowHeight = 60.0
     }
 
 //MARK: - TableView DataSource Methods
@@ -36,18 +35,21 @@ class ItemsViewController: UITableViewController{
     
     //Contents of the cells
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
-        
+
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
+
         if let item = toDoItems?[indexPath.row] {
-        cell.textLabel?.text = item.title
-        cell.accessoryType = item.done == true ? .checkmark : .none
+            cell.textLabel?.numberOfLines = 0
+            cell.textLabel?.text = item.title
+            cell.detailTextLabel?.text = item.dataCreated?.description
+            cell.accessoryType = item.done == true ? .checkmark : .none
         } else {
             cell.textLabel?.text = "No Items Added."
         }
         
         return cell
     }
+    
 
 //MARK: - TableView Delegate Methods
 
@@ -66,6 +68,27 @@ class ItemsViewController: UITableViewController{
         tableView.reloadData()
     }
     
+    
+//    //Swipe to delete UITableViewCells
+//    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+//        let delete = deleteAction(at: indexPath)
+//        return UISwipeActionsConfiguration(actions: [delete])
+//    }
+//
+//    func deleteAction(at indexPath: IndexPath) -> UIContextualAction {
+//        let action = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completion) in
+//            if let item = self.toDoItems?[indexPath.row] {
+//                try! self.realm.write {
+//                    self.realm.delete(item)
+//                }
+//                self.tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
+//            }
+//        }
+//        action.image = UIImage(systemName: "trash")
+//        action.backgroundColor = .red
+//
+//        return action
+//    }
     
 //MARK: - Add New Items
     
@@ -117,6 +140,18 @@ class ItemsViewController: UITableViewController{
 
         tableView.reloadData()
     }
+    
+    //MARK: - Delete Data From Swipe
+    
+    override func updateModel(at indexPath: IndexPath) {
+        if let item = self.toDoItems?[indexPath.row] {
+            try! self.realm.write {
+                self.realm.delete(item)
+            }
+        self.tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
+        }
+    }
+    
 }
 
 //MARK: - Search bar methods

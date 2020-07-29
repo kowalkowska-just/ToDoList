@@ -19,19 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         
         print(Realm.Configuration.defaultConfiguration.fileURL)
-        
-        do {
-            let realm = try Realm()
-        } catch {
-            print("Error initialsing new realm, \(error)")
-        }
-
+    
         return true
     }
 
-    func applicationWillTerminate(_ application: UIApplication) {
-        self.saveContext()
-    }
 
     // MARK: - Core Data stack
 

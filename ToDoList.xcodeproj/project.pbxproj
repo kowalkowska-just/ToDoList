@@ -16,6 +16,7 @@
 		CEA9945E24BCC02A00C3D491 /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA9945D24BCC02A00C3D491 /* ItemsViewController.swift */; };
 		CECD4FFA24D072C5008357DB /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECD4FF924D072C5008357DB /* Item.swift */; };
 		CECD4FFC24D072D5008357DB /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECD4FFB24D072D5008357DB /* Category.swift */; };
+		CECD4FFE24D20E29008357DB /* SwipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECD4FFD24D20E29008357DB /* SwipeTableViewController.swift */; };
 		D0C687BFF3AB7091F95FCD2E /* Pods_ToDoList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B406B4C84B68A2004E75326 /* Pods_ToDoList.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +35,7 @@
 		CEA9945D24BCC02A00C3D491 /* ItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
 		CECD4FF924D072C5008357DB /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		CECD4FFB24D072D5008357DB /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		CECD4FFD24D20E29008357DB /* SwipeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 			children = (
 				CEA9944D24BCBDE000C3D491 /* CategoryViewController.swift */,
 				CEA9945D24BCC02A00C3D491 /* ItemsViewController.swift */,
+				CECD4FFD24D20E29008357DB /* SwipeTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 				CEA9944E24BCBDE000C3D491 /* CategoryViewController.swift in Sources */,
 				CEA9945E24BCC02A00C3D491 /* ItemsViewController.swift in Sources */,
 				CEA9944A24BCBDE000C3D491 /* AppDelegate.swift in Sources */,
+				CECD4FFE24D20E29008357DB /* SwipeTableViewController.swift in Sources */,
 				CECD4FFA24D072C5008357DB /* Item.swift in Sources */,
 				CEA9944C24BCBDE000C3D491 /* SceneDelegate.swift in Sources */,
 				CECD4FFC24D072D5008357DB /* Category.swift in Sources */,
