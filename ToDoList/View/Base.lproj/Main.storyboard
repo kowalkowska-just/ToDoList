@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,9 +15,145 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="0AC-G3-0F3">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="210"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="JO3-uK-H1d">
+                                    <rect key="frame" x="10" y="10" width="394" height="190"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add New Category" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EKZ-0b-UfW">
+                                            <rect key="frame" x="0.0" y="0.0" width="394" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your new Category" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SoI-mJ-ms6">
+                                            <rect key="frame" x="22" y="30.5" width="350" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="d6D-Uc-ZfH"/>
+                                                <constraint firstAttribute="width" constant="350" id="kAC-gG-kvg"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="webSearch" returnKeyType="done" textContentType="organization"/>
+                                        </textField>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a color for the category" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pnj-4s-Ik9">
+                                            <rect key="frame" x="0.0" y="70.5" width="394" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="1iC-OA-4SZ">
+                                            <rect key="frame" x="0.0" y="98.5" width="394" height="51.5"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hkc-ic-ChA">
+                                                    <rect key="frame" x="0.0" y="0.0" width="57.5" height="51.5"/>
+                                                    <color key="backgroundColor" name="B71C1C"/>
+                                                    <color key="tintColor" name="B71C1C"/>
+                                                    <state key="normal" title="B71C1C">
+                                                        <color key="titleColor" name="B71C1C"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="selectedColor:" destination="bj0-oq-Ggx" eventType="touchUpInside" id="bJO-iC-qja"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OLy-0f-iAu">
+                                                    <rect key="frame" x="67.5" y="0.0" width="57" height="51.5"/>
+                                                    <color key="backgroundColor" name="FF6F00"/>
+                                                    <color key="tintColor" name="FF6F00"/>
+                                                    <state key="normal" title="FF6F00">
+                                                        <color key="titleColor" name="FF6F00"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="selectedColor:" destination="bj0-oq-Ggx" eventType="touchUpInside" id="xBb-x9-Ozb"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JpA-nY-scz">
+                                                    <rect key="frame" x="134.5" y="0.0" width="57.5" height="51.5"/>
+                                                    <color key="backgroundColor" name="FFC107"/>
+                                                    <color key="tintColor" name="FFC107"/>
+                                                    <state key="normal" title="FFC107">
+                                                        <color key="titleColor" name="FFC107"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="selectedColor:" destination="bj0-oq-Ggx" eventType="touchUpInside" id="Tln-eQ-eml"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cQS-J7-mP1">
+                                                    <rect key="frame" x="202" y="0.0" width="57.5" height="51.5"/>
+                                                    <color key="backgroundColor" name="4CAF50"/>
+                                                    <color key="tintColor" name="4CAF50"/>
+                                                    <state key="normal" title="4CAF50">
+                                                        <color key="titleColor" name="4CAF50"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="selectedColor:" destination="bj0-oq-Ggx" eventType="touchUpInside" id="Gey-QY-Pho"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jGC-h9-3Hb">
+                                                    <rect key="frame" x="269.5" y="0.0" width="57" height="51.5"/>
+                                                    <color key="backgroundColor" name="03A9F4"/>
+                                                    <color key="tintColor" name="03A9F4"/>
+                                                    <state key="normal" title="03A9F4">
+                                                        <color key="titleColor" name="03A9F4"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="selectedColor:" destination="bj0-oq-Ggx" eventType="touchUpInside" id="k1e-zK-OnH"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S6s-GJ-Gc4">
+                                                    <rect key="frame" x="336.5" y="0.0" width="57.5" height="51.5"/>
+                                                    <color key="backgroundColor" name="673AB7"/>
+                                                    <color key="tintColor" name="673AB7"/>
+                                                    <state key="normal" title="673AB7">
+                                                        <color key="titleColor" name="673AB7"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="selectedColor:" destination="bj0-oq-Ggx" eventType="touchUpInside" id="Y4B-C9-7nl"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </stackView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jWx-uZ-Skt">
+                                            <rect key="frame" x="152" y="160" width="90" height="30"/>
+                                            <color key="backgroundColor" name="LightGreenColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="egL-6E-ghg"/>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="lhI-8e-REs"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                            <state key="normal" title="Add">
+                                                <color key="titleColor" name="DarkGreenColor"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="addCategoryButtonPressed:" destination="bj0-oq-Ggx" eventType="touchUpInside" id="DzR-Mz-TMM"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.30196078431372547" green="0.71372549019607845" blue="0.67450980392156867" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="Pnj-4s-Ik9" firstAttribute="leading" secondItem="JO3-uK-H1d" secondAttribute="leading" id="0Lc-L3-4h5"/>
+                                        <constraint firstItem="EKZ-0b-UfW" firstAttribute="leading" secondItem="JO3-uK-H1d" secondAttribute="leading" id="1lv-G0-p3T"/>
+                                        <constraint firstAttribute="bottom" secondItem="jWx-uZ-Skt" secondAttribute="bottom" id="8kb-c7-wAq"/>
+                                        <constraint firstAttribute="trailing" secondItem="1iC-OA-4SZ" secondAttribute="trailing" id="9ll-rd-fpD"/>
+                                        <constraint firstItem="EKZ-0b-UfW" firstAttribute="top" secondItem="JO3-uK-H1d" secondAttribute="top" id="Cel-a9-bIu"/>
+                                        <constraint firstAttribute="trailing" secondItem="Pnj-4s-Ik9" secondAttribute="trailing" id="Hgy-zl-RJ7"/>
+                                        <constraint firstAttribute="trailing" secondItem="EKZ-0b-UfW" secondAttribute="trailing" id="PfS-KD-uCi"/>
+                                        <constraint firstItem="1iC-OA-4SZ" firstAttribute="leading" secondItem="JO3-uK-H1d" secondAttribute="leading" id="W2s-aQ-k8W"/>
+                                    </constraints>
+                                </stackView>
+                            </subviews>
+                            <color key="backgroundColor" red="0.96862745098039216" green="0.94509803921568625" blue="0.8901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="JO3-uK-H1d" secondAttribute="trailing" constant="10" id="RHc-9w-6eX"/>
+                                <constraint firstAttribute="bottom" secondItem="JO3-uK-H1d" secondAttribute="bottom" constant="10" id="gvC-Ep-fmV"/>
+                                <constraint firstItem="JO3-uK-H1d" firstAttribute="top" secondItem="0AC-G3-0F3" secondAttribute="top" constant="10" id="lSL-jP-bGT"/>
+                                <constraint firstItem="JO3-uK-H1d" firstAttribute="leading" secondItem="0AC-G3-0F3" secondAttribute="leading" constant="10" id="lgn-Ii-OhP"/>
+                            </constraints>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" textLabel="mGT-dn-jFp" style="IBUITableViewCellStyleDefault" id="t8H-hz-Wia">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <rect key="frame" x="0.0" y="238" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="t8H-hz-Wia" id="Wfi-aU-SDC">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -40,20 +177,23 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="ToDoList" id="OCf-qw-pco">
                         <barButtonItem key="backBarButtonItem" title="Back to Category List" id="ztH-c9-1Ig"/>
-                        <barButtonItem key="rightBarButtonItem" title="AddCategryButton" image="plus" catalog="system" id="x6z-sk-YCE">
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="addCategoryButtonPressed:" destination="bj0-oq-Ggx" id="1px-q2-8j5"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="FFC107button" destination="JpA-nY-scz" id="3FU-41-mli"/>
+                        <outlet property="addCategoryButton" destination="jWx-uZ-Skt" id="0hJ-vw-NDV"/>
+                        <outlet property="categoryTextField" destination="SoI-mJ-ms6" id="J2l-da-ocg"/>
+                        <outletCollection property="colorButtons" destination="hkc-ic-ChA" collectionClass="NSMutableArray" id="ISQ-9y-jmx"/>
+                        <outletCollection property="colorButtons" destination="OLy-0f-iAu" collectionClass="NSMutableArray" id="F9O-9Q-2Y7"/>
+                        <outletCollection property="colorButtons" destination="JpA-nY-scz" collectionClass="NSMutableArray" id="JpD-Ga-ZtJ"/>
+                        <outletCollection property="colorButtons" destination="cQS-J7-mP1" collectionClass="NSMutableArray" id="RR3-Gs-RVj"/>
+                        <outletCollection property="colorButtons" destination="jGC-h9-3Hb" collectionClass="NSMutableArray" id="cV2-sH-7rX"/>
+                        <outletCollection property="colorButtons" destination="S6s-GJ-Gc4" collectionClass="NSMutableArray" id="YRE-44-czn"/>
                         <segue destination="KhJ-0W-4Iu" kind="show" identifier="goToItems" id="OaU-LC-RC2"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zYt-mH-1Di" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1030" y="127"/>
+            <point key="canvasLocation" x="917" y="127"/>
         </scene>
         <!--ItemsViewController-->
         <scene sceneID="1Df-1z-gTH">
@@ -118,7 +258,7 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.79215686269999996" green="0.90980392160000001" blue="0.83529411760000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="barTintColor" red="0.10980392156862745" green="0.29803921568627451" blue="0.32156862745098036" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" name="DarkGreenColor"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <color key="textShadowColor" red="0.071771137420000006" green="0.14493823049999999" blue="0.1529435217" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -137,5 +277,29 @@
     <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
     <resources>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <namedColor name="03A9F4">
+            <color red="0.011764705882352941" green="0.66274509803921566" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="4CAF50">
+            <color red="0.29803921568627451" green="0.68627450980392157" blue="0.31372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="673AB7">
+            <color red="0.40392156862745099" green="0.22745098039215686" blue="0.71764705882352942" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="B71C1C">
+            <color red="0.71764707565307617" green="0.10980392247438431" blue="0.10980392247438431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="DarkGreenColor">
+            <color red="0.10999999940395355" green="0.29800000786781311" blue="0.32199999690055847" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="FF6F00">
+            <color red="1" green="0.43529411764705883" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="FFC107">
+            <color red="1" green="0.75686274509803919" blue="0.027450980392156862" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="LightGreenColor">
+            <color red="0.79199999570846558" green="0.9100000262260437" blue="0.83499997854232788" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>
